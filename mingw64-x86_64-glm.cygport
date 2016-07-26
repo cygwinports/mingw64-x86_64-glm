@@ -1,0 +1,22 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross cmake
+
+NAME="mingw64-x86_64-glm"
+VERSION=0.9.7.6
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="OpenGL Mathematics C++ template library for Win64 toolchain"
+DESCRIPTION="OpenGL Mathematics (GLM) is a header only C++ mathematics library
+for graphics software based on the OpenGL Shading Language specifications."
+HOMEPAGE="http://glm.g-truc.net/"
+SRC_URI="https://github.com/g-truc/glm/releases/download/${VERSION}/glm-${VERSION}.zip"
+SRC_DIR="glm"
+PATCH_URI="0.9.7.6-tests-compile.patch"
+
+CYGCMAKE_ARGS="-DGLM_TEST_ENABLE=ON"
+
+src_test() {
+	cd ${B}
+	# this test hangs
+	mingw64 ctest -E test-core_func_exponential
+}

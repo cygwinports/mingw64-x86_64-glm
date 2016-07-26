@@ -1,0 +1,11 @@
+--- origsrc/glm/test/gtc/gtc_round.cpp	2016-07-16 20:47:32.000000000 -0500
++++ src/glm/test/gtc/gtc_round.cpp	2016-07-25 13:29:07.067611300 -0500
+@@ -451,7 +451,7 @@ int main()
+ 	Error += ceilPowerOfTwo_advanced::test();
+ 	
+ #	ifdef NDEBUG
+-		Error += ceilPowerOfTwo::perf();
++		Error += ceilPowerOfTwo_advanced::perf();
+ #	endif//NDEBUG
+ 
+ 	Error += floorMultiple::test();
